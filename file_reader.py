@@ -8,20 +8,21 @@ class FileReader:
         "docstring"
         self.directory = directory #loading files directory.
         self.words = []
-
+        self.matriz={}
     def loadwords(self):
         for textfile in os.listdir(self.directory): #iterate each file in the specified dir
-            self.iterateFile(self.directory+'/'+textfile)
-
+            self.matriz[textfile] = []
+            self.iterateFile(textfile)
+           
     def iterateFile(self,textfile):
-        f = open(textfile, 'r')
+        f = open(self.directory+'/'+textfile, 'r')
         for line in f:
            self.words.extend([token for token in nltk.word_tokenize(line) if token.lower() not in stopwords.words('spanish') and len([letter for letter in token.lower() if letter.isdigit()])==0 ])
+           self.matriz[textfile].extend([token for token in nltk.word_tokenize(line) if token.lower() not in stopwords.words('spanish') and len([letter for letter in token.lower() if letter.isdigit()])==0 ])
 
     def printwords(self):
-        for word in self.words:
-            print(word)
-
+        print(self.matriz)
+        
     def deletewords(self,words):
         for word in self.words:
             if word in words:
