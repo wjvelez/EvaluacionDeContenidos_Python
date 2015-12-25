@@ -29,6 +29,10 @@ class FileReader:
                 self.removeall_replace(word)
 
     def removeall_replace(self,word):
+        for key in self.matriz:
+            temp = [y for y in self.words if y != word]
+            del self.matriz[key][:]
+            self.matriz[key].extend(temp)
         t = [y for y in self.words if y != word]
         del self.words[:]
         self.words.extend(t)
