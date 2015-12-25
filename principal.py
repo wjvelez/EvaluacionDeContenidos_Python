@@ -4,11 +4,14 @@ import os
 from file_reader import FileReader
 
 def main():
+    lista_unrepeated_words = []
     file_reader = FileReader(os.getcwd()+'/Files')
     file_reader.loadwords()
     file_reader.printwords()
     file_reader.deletewords(["xD","asd","quieres","xS"]) #palabras a eliminar
     file_reader.printwords()
+    lista_unrepeated_words = file_reader.get_unrepeatedWords()
+    file_reader.printStadistics()
 
 if __name__ == '__main__':
     main() 

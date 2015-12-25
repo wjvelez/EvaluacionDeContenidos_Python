@@ -36,3 +36,18 @@ class FileReader:
         t = [y for y in self.words if y != word]
         del self.words[:]
         self.words.extend(t)
+
+    def get_unrepeatedWords(self):
+        '''se tiene una lista sin elementos repetidos '''
+        return list(set(self.words))
+
+    
+    def countWordsInFile(self,key,word):
+        '''key = filename '''
+        return self.matriz[key].count(word)
+        
+    def printStadistics(self):
+        for key in self.matriz:
+            print("Nombre de Documento %s",(key))
+            for word in self.matriz[key]:
+                print("Palabra: %s  Conteo %d",(word,self.countWordsInFile(key,word)))
