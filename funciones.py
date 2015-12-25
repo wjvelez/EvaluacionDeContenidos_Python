@@ -4,6 +4,7 @@ from os import *
 import shutil
 import easygui as eg
 
+
 #funcion que recibe un directorio y guarda todos los archivos de este a un lista
 def cargarDirectorio(direc):
     contenedor = []

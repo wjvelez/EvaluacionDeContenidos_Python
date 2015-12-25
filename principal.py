@@ -1,7 +1,18 @@
 from funciones import *
 import easygui as eg
+import os
+from file_reader import FileReader
 
-while(True):
+def main():
+    file_reader = FileReader(os.getcwd()+'/Files')
+    file_reader.loadwords()
+    file_reader.printwords()
+    file_reader.deletewords(["xD","asd","quieres","xS"]) #palabras a eliminar
+    file_reader.printwords()
+
+if __name__ == '__main__':
+    main() 
+"""while(True):
     print ("Proyecto de Lenguajes de Programacion")
     menu()
     op = int(input('ingrese opcion: '))
@@ -9,12 +20,11 @@ while(True):
         #cargar documentos
         print ("Cargar Documentos")
         ruta = getcwd()
-        dest = ruta + "\destino\\"#se asigna la ruta donde se copiaran los doc
-
+        destino = os.makedirs(ruta + "/Files")
+        #dest = ruta + "\destino\\"#se asigna la ruta donde se copiaran los doc
         orig = eg.diropenbox(msg="Abrir", title="", default=None)
         eg.msgbox(orig, ok_button="Continuar")
-
-        copiarFicheros(orig, dest)
+        copiarFicheros(orig, destino)
 
         
     elif(op==2):
@@ -26,3 +36,4 @@ while(True):
         print ("gracias...")
         break
 
+"""
